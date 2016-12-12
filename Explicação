@@ -1,3 +1,1 @@
-A variavel 'a' recebe o valor antigo do 'b' mais o valor antigo do 'c' pois como é bloqueante ele recebe os valores do 'b' e do 'c' antes de serem atualizados.
-Já variavel 'b' recebe o valor do 'a' mais o valor antigo do 'c' e a variavel 'c' recebe o novo valor do 'b' e do 'a'.
-Precisamos de um flip-flop para a variavel 'b' porque para as contas utilizamos seu valor atualizado e destualizado.
+A unica diferença dessa questão para a questão 7 é que o valor do 'c' será o 'b' antigo no lugar do novo, pois como o 'b' é não-bloqueante a operação de atualização da variavel só é feita após todas as outras operações serem feitas, então o valor que vale na operação de soma na atribuição da variavel 'c' é o valor não atualizado da variavel 'b'.
