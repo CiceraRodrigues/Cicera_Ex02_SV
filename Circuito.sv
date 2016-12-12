@@ -1,19 +1,20 @@
 module Circuito(
-input Clock, output logic f);
-    logic[8:0] count, EntradaCount, EntradaSaida;
+input Clock, 
+output logic f1, f2);
+    logic[12:0] contador;
 
-    Registrador Count(.Clock(Clock), .Entrada(EntradaCount), .Saida(count)),
-                Saida(.Clock(Clock), .Entrada(EntradaSaida), .Saida(f));
+    ContadorDescida Count(.Clock(Clock), .Saida(contador));
 
-    always_comb begin
-        if(count==9'd499)
-            EntradaCount = 9'd0;
+    always_ff @(negedge Clock) begin
+
+        if(contador>=13'd3849 && contador<13'd4149)
+            f1 <= 13'd0;
         else
-            EntradaCount = count + 9'd1;
+            f1 <= 13'd1;
 
-        if(count>9'd19 && count<9'd90)
-            EntradaSaida = 9'd0;
+        if(contador>=13'd3199 && contador<13'd3799)
+            f2 <= 13'd0;
         else
-            EntradaSaida = 9'd1;
+            f2 <= 13'd1;
     end
 endmodule
